@@ -1,0 +1,28 @@
+def given_nth_value(arr, k, str_):
+    str_ = str_.lower()    
+    kth_term = 0            
+    list_of_values = list(set(arr))
+    
+    if type(k) != int:
+        return "Incorrect value for k"
+    if type(k) == int and k < 0:
+        return "Incorrect value for k"
+    if str_.lower() != 'max' and str_.lower() != 'min':
+        return "Valid entries: 'max' or 'min'"
+    for element in arr:
+        if type(element) != int:
+            return "Invalid entry list"
+    if len(list_of_values) == 0:
+        return "No values in the array"
+    if type(k) == int and k >= len(list_of_values):
+        return "No way"
+    if str_ == 'max':
+        list_of_values.sort(reverse=True)
+    if str_ == 'min':
+        list_of_values.sort()
+    if len(list_of_values) > 0:
+        kth_term = list_of_values[k-1]
+    if len(arr) == 0:
+        return "No values in the array"
+        
+    return kth_term
